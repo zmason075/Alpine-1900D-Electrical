@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beech 1900D Electrical Trainer</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f6f5f1;--pn:#fff;--tx:#1d1d1b;--mu:#6b6a65;--bd:#d9d7cf;--dead:#b3b2ac;--lg:#2e9e5b;--rg:#2f7fd6;--cb:#d9453d;--tf:#8e5bd0;--gp:#9b6fd6;--ac:#139a9a;--am:#d98e04}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#151514;--pn:#1f1f1d;--tx:#ecebe6;--mu:#a09f98;--bd:#383835;--dead:#55554f}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#151514;--pn:#1f1f1d;--tx:#ecebe6;--mu:#a09f98;--bd:#383835;--dead:#55554f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+.w{max-width:1400px;margin:0 auto;padding:14px}
+h1{font-size:20px;margin:0 0 12px}
+.card{background:var(--pn);border:1px solid var(--bd);border-radius:10px;padding:12px;margin-bottom:12px}
+h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mu);margin:0 0 8px}
+.sv{overflow-x:auto}.sv svg{min-width:760px;width:100%;height:auto;display:block}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:760px){.g{grid-template-columns:1fr}}
+.row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;align-items:center}
+button,.tg{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:7px;padding:5px 9px;cursor:pointer}
+button:hover{border-color:var(--mu)}button.on{background:var(--tx);color:var(--bg)}
+button.lit{background:#fff;color:#111;border-color:var(--tx);box-shadow:0 0 0 2px #fff,0 0 10px 2px rgba(255,255,255,.85)}
+.tg{display:inline-flex;gap:6px;align-items:center}.lbl{color:var(--mu);font-size:12px;min-width:64px}
+.an{display:flex;flex-wrap:wrap;gap:6px}.l{padding:4px 8px;border-radius:5px;border:1px solid #2c2c2c;background:#141414;color:#6e6e6e;font-size:12px;font-weight:600}
+.l.o,.l.r,.l.a{color:#ffb000;text-shadow:0 0 6px #ffb000}
+.ld{display:flex;gap:8px;align-items:center;padding:3px 0;border-bottom:1px solid var(--bd)}.ld:last-child{border:0}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--dead);flex:none}.dot.p{background:var(--lg)}.dot.x{background:var(--cb)}
+.tag{margin-left:auto;color:var(--mu);font-size:11px}.m{color:var(--mu)}
+.ins{margin:0;padding:0;list-style:none}.ins li{padding:6px 8px;border-radius:6px;margin-bottom:5px;background:var(--bg);border-left:4px solid var(--bd)}
+.ins li.w{border-left-color:var(--cb)}.ins li.i{border-left-color:var(--rg)}
+.ed{fill:none;stroke:var(--dead);stroke-width:2;opacity:.5}.ed.st{stroke-dasharray:4 5}
+.ov{fill:none;stroke-width:5;animation:dash linear infinite}.ov.rv{animation-direction:reverse}
+@keyframes dash{to{stroke-dashoffset:var(--to)}}
+@media(prefers-reduced-motion:reduce){.ov{animation:none}}
+.msg{background:var(--cb);color:#fff;padding:6px 10px;border-radius:6px;margin-bottom:8px;font-size:13px}.lg{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:8px;font-size:12px;color:var(--mu)}.lg i{display:inline-block;width:22px;height:5px;border-radius:2px;vertical-align:middle;margin-right:5px}
+#panels{align-items:start}.ch{display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;margin:0}.tri{display:inline-block;font-size:11px;transition:transform .2s}
+.card.open .tri{transform:rotate(90deg)}.cb{display:none;margin-top:10px}.card.open .cb{display:block}.card.open .ch{margin-bottom:0}
+@media(prefers-reduced-motion:reduce){.tri{transition:none}}
+.tip{position:fixed;z-index:20;max-width:270px;display:none;pointer-events:none;background:#111;color:#f2f2f2;border:1px solid #ffb000;padding:7px 10px;border-radius:6px;font-size:12px;line-height:1.4;box-shadow:0 4px 14px rgba(0,0,0,.4)}.an{cursor:default}
+svg text{font-family:system-ui,sans-serif}[data-t]{cursor:pointer}
+</style></head><body><div id="tip" class="tip"></div><div class="w">
+<h1>Beech 1900D Electrical Trainer</h1>
+<div class="card sv"><div id="msg" class="msg" style="display:none"></div><div class="lg"><span><i style="background:var(--lg)"></i>L GEN</span><span><i style="background:var(--rg)"></i>R GEN</span><span><i style="background:var(--cb)"></i>Battery</span><span><i style="background:var(--gp)"></i>GPU</span><span>Alternating = more than one source</span></div><svg id="svg" viewBox="-410 0 1410 700" role="img" aria-label="1900D electrical schematic"></svg></div>
+<div class="card"><h2 class="ch" role="button" tabindex="0" aria-expanded="false"><span class="tri">▶</span>Scenarios</h2><div class="cb"><div class="row" id="sc"></div></div></div>
+<div class="g" id="panels">
+ <div class="card"><h2 class="ch" role="button" tabindex="0" aria-expanded="false"><span class="tri">▶</span>Controls</h2><div class="cb"><div id="ct"></div></div></div>
+ <div class="card"><h2 class="ch" role="button" tabindex="0" aria-expanded="false"><span class="tri">▶</span>What this means</h2><div class="cb"><ul class="ins" id="ins"></ul></div></div>
+</div>
+<p class="m">DC system only. Load meters show DC load %, simplified: 20% on each side with both gens online, 40% on the one online gen otherwise. Not modeled: battery failure and automatic HED trips at 325A and 275A (gen ties: click a closed tie to trip it open, an open tie to close it manually so the gen bus runs on battery, or a tripped tie to reset it; ties also open on a center bus short, that gen's overvoltage, or when they have not sensed 28V). Where a bus or line has more than one source, its color alternates between those sources. Cockpit switches (bottom left of the diagram): click above or below a switch to move it. GEN TIES: MAN CLOSE closes both gen ties, OPEN holds them open. Ignition: ON or STARTER ONLY begins a start (the starter relay needs power); OFF after an ON start leaves the engine running. Volt select (left of the diagram): click the knob or a label to choose what the voltmeter reads: EXT PWR, CTR BUS, L GEN, R GEN, TPL BUS or BATT (the order on the cockpit knob).</p>
+</div>
+<script>
+const I=99,SC={'L GEN':'var(--lg)','R GEN':'var(--rg)','BATT':'var(--cb)','GPU':'var(--gp)'},ORD=['L GEN','R GEN','BATT','GPU'];
+const D={batt:1,lSw:1,rSw:1,lE:'off',rE:'off',gpuC:0,gpuS:0,gpuHV:0,lGF:0,rGF:0,ctr:0,tL:0,tB:0,tR:0,xL:0,xR:0,xB:0,gear:0,fl:0,low:0,vs:5,lM:'on',rM:'on',gtOpen:0,lOV:0,rOV:0,mL:0,mR:0,cL:0,cR:0,cB:0};
+let S={...D};
+const N=[['GL',105,80,90,90,'L GEN','L GEN'],['GR',805,80,90,90,'R GEN','R GEN'],['GPU',460,60,80,36,'GPU','GPU'],['LG',60,240,170,40,'L GEN BUS'],['RG',770,240,170,40,'R GEN BUS'],['CL',335,240,110,40,'L CEN BUS'],['CR',555,240,110,40,'R CEN BUS'],['J',494,254,12,12,''],['BB',440,470,120,44,'BATTERY BUS'],['BT',640,395,100,44,'BATTERY','BATT'],['HB',280,335,100,44,'HOT BAT BUS'],['TFB',340,610,320,60,'TRIPLE FED BUS (27V, diodes)'],['SL',372,151,36,18,'RLY'],['SR',592,151,36,18,'RLY']];
+const DT={GL:'eL',GR:'eR',GPU:'gpuC',BT:'batt'};
+const EP=[['GL','KL','M150,170V205'],['KL','LG','M150,225V240'],['GR','KR','M850,170V205'],['KR','RG','M850,225V240'],['LG','CL','M230,260H335'],['RG','CR','M770,260H665'],['CL','J','M445,260H500'],['CR','J','M555,260H500'],['GPU','J','M500,96V260'],['J','BN','M500,260V417'],['BT','BN','M640,417H500'],['BN','BB','M500,417V470'],['BN','HB','M500,417H330V379'],['J','HB','M500,305H330V335'],['LG','TFB','M110,280L300,560L340,625'],['RG','TFB','M890,280L700,560L660,625'],['BB','TFB','M500,514V610'],['CL','SL','M390,240V169'],['SL','GL','M390,151V125H195'],['CR','SR','M610,240V169'],['SR','GR','M610,151V125H805']];
+const TL=[['tL',252,260,'L TIE',40],['tR',748,260,'R TIE',40],['tB',500,330,'BATT TIE',58],['xL',205,420,'60A',44],['xR',795,420,'60A',44],['xB',500,545,'60A',44]];
+const tx=(x,y,t,o='')=>`<text x="${x}" y="${y}" font-size="10" fill="var(--mu)" ${o}>${t}</text>`;
+const hed=(x,y,l)=>`<rect x="${x-22}" y="${y-11}" width="44" height="22" rx="3" fill="var(--pn)" stroke="#e8820c" stroke-width="2"/><text x="${x}" y="${y+4}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tx)">HED</text>`+tx(x,y-15,l,'text-anchor="middle" fill="#e8820c"');
+const dio=(x,y)=>`<polygon points="${x-7},${y-7} ${x+7},${y-7} ${x},${y+7}" fill="var(--tx)"/><line x1="${x-8}" y1="${y+8}" x2="${x+8}" y2="${y+8}" stroke="var(--tx)" stroke-width="2"/>`;
+const dioU=(x,y)=>`<polygon points="${x-7},${y+7} ${x+7},${y+7} ${x},${y-7}" fill="var(--tx)"/><line x1="${x-8}" y1="${y-8}" x2="${x+8}" y2="${y-8}" stroke="var(--tx)" stroke-width="2"/>`;
+let h='<defs id="df"></defs>';
+h+=EP.map(e=>`<g><path class="ed${/^(CLSL|SLGL|CRSR|SRGR)$/.test(e[0]+e[1])?' st':''}" id="e${e[0]}${e[1]}" d="${e[2]}"/>`+[0,1,2,3].map(k=>`<path class="ov" id="o${e[0]}${e[1]}${k}" d="${e[2]}" style="display:none"/>`).join('')+'</g>').join('');
+[['110','L'],['810','R']].forEach(([x,s])=>h+=`<g data-t="${s=='L'?'lSw':'rSw'}"><rect x="${x}" y="26" width="80" height="30" rx="4" fill="none" stroke="${s=='L'?'var(--lg)':'var(--rg)'}" stroke-width="2.5"/><text x="${+x+40}" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="var(--tx)">GCU</text><text id="gs${s}" x="${+x+40}" y="18" text-anchor="middle" font-size="9" font-weight="700"></text></g>`+tx(s=='L'?200:740,45,'28V 300A'));
+h+=tx(548,72,'28V 300A cont.')+tx(548,84,'1000A momentary');
+h+=`<g data-t="gpuC"><rect id="gpuPill" x="386" y="66" width="66" height="26" rx="13" stroke-width="1.5"/><circle id="gpuKnob" cy="79" r="10" fill="#fff"/><text id="gpuPt" y="83" font-size="9" font-weight="700" text-anchor="middle"></text></g>`+tx(419,60,'GPU POWER','text-anchor="middle"');
+h+=tx(292,118,'STARTER RELAY')+tx(630,118,'STARTER RELAY')+tx(168,200,'LINE CONTACTOR')+tx(868,200,'LINE CONTACTOR');
+[['L',150,290,'M110,41H92V215H130'],['R',850,710,'M890,41H975V215H870']].forEach(([s,x,mx,cp])=>{
+ h+=`<path id="sn${s}" class="ov rv" d="M${x},56V80" style="stroke-width:3;stroke:var(--dead);stroke-dasharray:none;animation:none"/><path id="kl${s}" d="${cp}" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-dasharray="3 3"/>`;
+ h+=`<rect id="kr${s}" x="${x-20}" y="205" width="40" height="20" rx="3" stroke-width="2"/><text id="kt${s}" x="${x}" y="218" text-anchor="middle" font-size="8" font-weight="700"></text>`;
+ h+=`<path id="ml${s}" d="M${s=='L'?mx-22:mx+22},185H${x}" fill="none" stroke="var(--mu)" stroke-width="3"/><circle cx="${mx}" cy="185" r="22" fill="#161616" stroke="#555" stroke-width="2"/><line id="ln${s}" x1="${mx}" y1="193" x2="${mx}" y2="178" stroke="#f3f3f3" stroke-width="2" stroke-linecap="round"/><circle cx="${mx}" cy="193" r="2.5" fill="#f3f3f3"/><text id="lt${s}" x="${mx}" y="204" text-anchor="middle" font-size="8" fill="#ccc"></text>`+tx(mx,222,'DC LOAD %','text-anchor="middle"');});
+h+=`<g data-t="gpuS"><rect id="rly" x="474" y="162" width="52" height="18" rx="3" stroke-width="1.5"/><text id="trly" x="500" y="174" text-anchor="middle" font-size="9" font-weight="700">OPEN</text></g>`+tx(532,175,'EXT PWR RELAY');
+h+=hed(300,260,'325A')+hed(700,260,'325A')+hed(500,376,'275A')+tx(476,380,'▲ one-way','text-anchor="end"');
+h+=`<path id="bc1" d="M590,465H574V442H526" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-dasharray="4 4"/><path id="bc2" d="M574,442V330H529" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-dasharray="4 4"/>`;
+h+=`<g data-t="batt"><rect id="sw" x="590" y="455" width="56" height="20" rx="3" stroke-width="1.5"/><text id="tsw" x="618" y="469" text-anchor="middle" font-size="9" font-weight="700">SW</text></g>`+tx(618,490,'BATT SWITCH','text-anchor="middle"')+tx(750,420,'24V 34Ah');
+h+=`<rect id="brl" x="474" y="434" width="52" height="16" rx="3" stroke-width="1.5"/><text id="tbrl" x="500" y="445" text-anchor="middle" font-size="9" font-weight="700"></text>`+tx(468,445,'BATT RELAY','text-anchor="end"');
+h+=`<circle cx="500" cy="305" r="3.5" fill="var(--tx)"/><circle cx="500" cy="417" r="3.5" fill="var(--tx)"/>`+dio(330,320)+dioU(330,398)+tx(338,318,'diode')+tx(338,400,'diode');
+h+=tx(64,298,'✱ FLAPS')+tx(340,294,'✱ GEAR');
+h+=dio(320,592)+dio(680,592)+dio(500,570);
+N.forEach(([k,x,y,w,hh,t])=>{const cx=x+w/2,cy=y+hh/2;h+=`<g id="n${k}"${DT[k]?` data-t="${DT[k]}"`:''}>`+((k=='GL'||k=='GR')?`<circle class="b" cx="${cx}" cy="${cy}" r="${w/2}"/><text x="${cx}" y="${cy-3}" text-anchor="middle" font-size="12" font-weight="700">${t}</text><text id="s${k}" x="${cx}" y="${cy+14}" text-anchor="middle" font-size="10"></text>`:`<rect class="b" x="${x}" y="${y}" width="${w}" height="${hh}" rx="${hh<20?6:7}"/>`+(!t?'':hh<36?`<text x="${cx}" y="${cy+4}" text-anchor="middle" font-size="11" font-weight="700">${t}</text>`:`<text x="${x+8}" y="${y+17}" font-size="12" font-weight="700">${t}</text><text id="s${k}" x="${x+8}" y="${y+hh-9}" font-size="10"></text>`))+'</g>';});
+TL.forEach(([k,x,y,t,w])=>h+=`<g data-t="${k}"><rect id="t${k}" x="${x-w/2}" y="${y-8}" width="${w}" height="16" rx="4" stroke-width="1.5"/><text id="tt${k}" x="${x}" y="${y+4}" text-anchor="middle" font-size="10" font-weight="700">${t}</text></g>`);
+h+='<rect x="-400" y="378" width="390" height="46" rx="6" fill="#0d0d0d" stroke="#3a3a3a" stroke-width="2"/>';
+[['L DC','GEN'],['L GEN TIE','OPEN'],['BATT TIE','OPEN'],['R GEN TIE','OPEN'],['R DC','GEN']].forEach(([a,b],i)=>{const x=-393+i*76;h+=`<g class="an" data-i="${i}"><rect id="ar${i}" x="${x}" y="384" width="72" height="34" rx="3"/><text id="at${i}" x="${x+36}" y="398" text-anchor="middle" font-size="10" font-weight="700"><tspan x="${x+36}" dy="0">${a}</tspan><tspan x="${x+36}" dy="12">${b}</tspan></text></g>`;});
+h+=tx(990,692,'▼ = diode · dashed grey = GCU sense and contactor control · click gens, GCUs, GPU, ext power relay, battery, batt switch, ties and 60A limiters','text-anchor="end"');
+document.getElementById('svg').innerHTML=h;
+document.getElementById('svg').addEventListener('click',e=>{const g=e.target.closest('[data-t]');if(g)tog(g.dataset.t);});
+
+// Ties latch closed once they sense a source (28V for gen ties, never the 24V battery) and open only on trip (>325A / >275A), center short, or loss of all power
+function settle(){const lG=S.lE=='run'&&!S.lGF,rG=S.rE=='run'&&!S.rGF,lOn=lG&&S.lSw&&!S.lOV,rOn=rG&&S.rSw&&!S.rOV,gpu=!!(S.gpuC&&S.gpuS&&!S.gpuHV),c=!S.ctr,pw=S.batt||lOn||rOn||gpu;
+ if(!pw)S.mL=S.mR=0;
+ for(let n=0;n<3;n++){const c28=gpu||(lOn&&S.cL)||(rOn&&S.cR);
+  S.cL=c&&!S.tL&&!S.gtOpen&&!S.lOV&&pw&&(S.cL||S.mL||lOn||gpu||(rOn&&S.cR))?1:0;
+  S.cR=c&&!S.tR&&!S.gtOpen&&!S.rOV&&pw&&(S.cR||S.mR||rOn||gpu||(lOn&&S.cL))?1:0;
+  S.cB=c&&!S.tB&&S.batt?1:0;}}
+function calc(){
+ const lG=S.lE=='run'&&!S.lGF,rG=S.rE=='run'&&!S.rGF,lOn=lG&&S.lSw&&!S.lOV,rOn=rG&&S.rSw&&!S.rOV,c=!S.ctr;
+ const gpu=!!(S.gpuC&&S.gpuS&&!S.gpuHV);
+ // ties close only on sensing 28V (gens or GPU, never the 24V battery); batt tie closes on any source
+ settle();const cL=!!S.cL,cR=!!S.cR,cB=!!S.cB;
+ const E=[['GL','KL',lG,0],['KL','LG',lOn,0],['GR','KR',rG,0],['KR','RG',rOn,0],['LG','CL',cL,1],['RG','CR',cR,1],['CL','J',c,1],['CR','J',c,1],['GPU','J',c&&gpu,0],['J','BN',cB,1],['BN','BB',S.batt,1],['BT','BN',1,1],['BN','HB',1,0],['J','HB',c,0],['LG','TFB',!S.xL,0],['RG','TFB',!S.xR,0],['BB','TFB',!S.xB,0],['CL','SL',c,0],['CR','SR',c,0],['SL','GL',S.lE=='start',0],['SR','GR',S.rE=='start',0]];
+ const d={GL:lG?0:I,GR:rG?0:I,GPU:gpu?3:I,BT:9};
+ ['LG','RG','CL','CR','J','TFB','BB','HB','SL','SR','KL','KR','BN'].forEach(k=>d[k]=I);
+ for(let n=0;n<16;n++)E.forEach(([a,b,on,bi])=>{if(!on)return;if(d[a]+1<d[b])d[b]=d[a]+1;if(bi&&d[b]+1<d[a])d[a]=d[b]+1;});
+ const fl={};
+ E.forEach(([a,b,on,bi])=>{let f=0;if(on&&d[a]<I){if(b=='TFB')f=1;else if(d[a]<d[b])f=1;else if(bi&&d[b]<d[a])f=-1;}fl[a+b]=f;});
+ const sL=S.lE=='start'&&d.SL<I,sR=S.rE=='start'&&d.SR<I;
+ const own={GL:'L GEN',GR:'R GEN',GPU:'GPU'},src={};
+ Object.keys(d).sort((x,y)=>d[x]-d[y]).forEach(k=>{
+  if(d[k]>=I){src[k]=[];return;}
+  const s=new Set();if(own[k]&&(k=='GPU'||d[k]==0))s.add(own[k]);if(k=='BT'&&d.BT==9)s.add('BATT');
+  E.forEach(([a,b,on,bi])=>{if(!on)return;
+   if(b==k&&d[a]<d[k])src[a].forEach(v=>s.add(v));
+   if(bi&&a==k&&d[b]<d[k])src[b].forEach(v=>s.add(v));});
+  src[k]=ORD.filter(v=>s.has(v));});
+ const F=[['LG','L GEN BUS',S.xL],['BB','BAT BUS',S.xB],['RG','R GEN BUS',S.xR]].filter(([k,,x])=>!x&&d[k]<I),u=new Set();
+ F.forEach(([k])=>src[k].forEach(v=>u.add(v)));src.TFB=ORD.filter(v=>u.has(v));
+ // during a cross-start or GPU start the battery is paralleled with the other source and also supplies the starter
+ const bs=(sL||sR)&&!!S.batt&&cB&&src.J.length>0&&!src.J.includes('BATT'),ov={};
+ if(bs){['J','CL','CR','BN','BB','HB'].forEach(k=>{if(d[k]<I)src[k]=ORD.filter(v=>v=='BATT'||src[k].includes(v));});if(!S.xB&&d.BB<I)src.TFB=ORD.filter(v=>v=='BATT'||src.TFB.includes(v));if(sL)src.SL=ORD.filter(v=>v=='BATT'||src.SL.includes(v));if(sR)src.SR=ORD.filter(v=>v=='BATT'||src.SR.includes(v));fl.BTBN=1;fl.JBN=-1;ov.BTBN=['BATT'];ov.JBN=['BATT'];}
+ const nG=(lOn?1:0)+(rOn?1:0),ldG=nG==2?20:nG==1?40:0;
+ return{d,fl,src,bs,ov,lOn,rOn,lG,rG,lLd:lOn?ldG:0,rLd:rOn?ldG:0,gpu,sL,sR,cl:{tL:cL,tR:cR,tB:cB},v28:lOn||rOn||gpu,tf:F.map(x=>x[1])};}
+
+const P=(R,k)=>R.d[k]<I;
+function note(t){const m=document.getElementById('msg');m.textContent=t;m.style.display='block';clearTimeout(note.t);note.t=setTimeout(()=>m.style.display='none',5000);}
+function setE(k,v){const R=calc(),rl=k=='lE'?'SL':'SR';if(S[k]=='off'&&v!='off'&&!P(R,rl)){note('Engine will not start: the starter relay has no power. It needs the battery, GPU or the other generator feeding the center bus.');up();return;}if(v=='start')S[k=='lE'?'lM':'rM']='on';S[k]=v;up();}
+function tog(t){if(t=='eL'||t=='eR'){const k=t=='eL'?'lE':'rE';setE(k,{off:'start',start:'run',run:'off'}[S[k]]);return;}if(t=='tL'||t=='tR'){const k=t[1],R=calc();if(S[t])S[t]=0;else if(R.cl[t]){S[t]=1;S['m'+k]=0;}else{S['m'+k]=1;S.gtOpen=0;}up();return;}S[t]=S[t]?0:1;up();}
+const ANN=[];
+function gcuWhy(x){const l=x=='L',e=S[l?'lE':'rE'];return x+' line contactor open: '+(e=='off'?'engine not running, so no generator output.':e=='start'?'engine starting. The GCU keeps the contactor open until the generator is producing and within limits.':S[l?'lGF':'rGF']?'no generator output for the GCU to put on the bus.':!S[l?'lSw':'rSw']?'gen switch off. The GCU holds the contactor open even though the generator is producing.':S[l?'lOV':'rOV']?'overvoltage (above 32V). The GCU opened the contactor to protect the bus.':'generator parameters not met.');}
+function tieWhy(k){const n=k=='B'?'Batt tie':k+' gen tie',a=k=='B'?'275A':'325A';
+ if(S.ctr)return n+' open: overcurrent. A center bus fault made the HED open the ties.';
+ if(S['t'+k])return n+' open: tripped by its HED (over '+a+').';
+ if(k!='B'&&S[k.toLowerCase()+'OV'])return n+' open: overvoltage on the '+k+' generator, so the tie will not close.';
+ if(k=='B'&&!S.batt)return n+' open: no voltage. The battery switch is off, so the batt relay and tie are not energized.';
+ return n+' open: no voltage. Gen ties close only on sensing 28V from a generator or the GPU (never the 24V battery), and open again when all power is lost. Click the tie to close it manually and run the gen bus from the battery.';}
+const WHY=[()=>gcuWhy('L'),()=>tieWhy('L'),()=>tieWhy('B'),()=>tieWhy('R'),()=>gcuWhy('R')];
+let tipI=-1,tipT=0;
+function tipShow(e){const t=document.getElementById('tip');if(tipI<0||!ANN[tipI]){t.style.display='none';return;}t.textContent=ANN[tipI];t.style.display='block';if(e){const w=t.offsetWidth;t.style.left=Math.max(8,Math.min(e.clientX+12,innerWidth-w-8))+'px';t.style.top=(e.clientY+18)+'px';}}
+{const sv=document.getElementById('svg'),idx=e=>{const g=e.target.closest('.an');return g?+g.dataset.i:-1;};
+ sv.addEventListener('mousemove',e=>{tipI=idx(e);tipShow(e);});
+ sv.addEventListener('mouseleave',()=>{tipI=-1;tipShow();});
+ sv.addEventListener('click',e=>{const i=idx(e);if(i<0)return;tipI=i;tipShow(e);clearTimeout(tipT);tipT=setTimeout(()=>{tipI=-1;tipShow();},4000);});}
+const stripe=cs=>cs.length==1?SC[cs[0]]:`repeating-linear-gradient(45deg,${cs.map((c,i)=>`${SC[c]} ${i*4}px ${i*4+4}px`).join(',')})`;
+function up(){
+ const R=calc(),{d,fl,src}=R,df=[];
+ EP.forEach(([a,b])=>{const f=fl[a+b]||0,cs=f?(R.ov[a+b]||src[f>0?a:b]):[],n=cs.length,L=n>1?12:10,G=n>1?(n-1)*L:6,Pd=L+G;
+  for(let k=0;k<4;k++){const o=document.getElementById('o'+a+b+k);
+   if(k<n){o.style.display='';o.style.stroke=SC[cs[k]];o.style.strokeDasharray=L+' '+G;o.style.strokeDashoffset=(-k*L)+'px';o.style.setProperty('--to',(-k*L-Pd)+'px');o.style.animationDuration=(Pd/22)+'s';o.classList.toggle('rv',f<0);}
+   else o.style.display='none';}});
+ const sub={
+  GL:R.lG?(S.lOV?'OUTPUT >32V':'OUTPUT 28V'):S.lE=='start'?(R.sL?'STARTING':'NO START PWR'):S.lE=='run'?'GEN FAILED':'ENGINE OFF',
+  GR:R.rG?(S.rOV?'OUTPUT >32V':'OUTPUT 28V'):S.rE=='start'?(R.sR?'STARTING':'NO START PWR'):S.rE=='run'?'GEN FAILED':'ENGINE OFF',
+  BT:!S.batt?'HOT BUS ONLY':d.BT<9&&!R.bs?'CHARGING':R.bs?'SUPPLYING START':'DISCHARGING',
+  GPU:!S.gpuC?'OFF':R.gpu?'POWERING':S.gpuHV?'BLOCKED >32V':'EXT SW OFF'};
+ ['LG','CL','CR','RG','BB','HB'].forEach(k=>sub[k]=P(R,k)?'◄ '+src[k].join(' + '):'NO POWER');
+ sub.TFB=R.tf.length?'◄ '+R.tf.join(' + '):'NO POWER';
+ N.forEach(([k,,,,,,o])=>{const g=document.getElementById('n'+k),on=k=='GL'?R.lG||R.sL:k=='GR'?R.rG||R.sR:k=='BT'?true:k=='GPU'?!!S.gpuC:P(R,k);
+  const cs=k=='GL'?(R.lG?['L GEN']:src.GL):k=='GR'?(R.rG?['R GEN']:src.GR):k=='BT'?(d.BT<9&&!R.bs?src.BT:['BATT']):o?[o]:src[k],r=g.querySelector('.b');let fill='var(--dead)';if(k=='BT'){r.style.stroke='var(--cb)';r.style.strokeWidth='3px';}
+  if(on&&cs.length==1)fill=SC[cs[0]];
+  else if(on&&cs.length>1){const n=cs.length,w=14;df.push(`<pattern id="p${k}" patternUnits="userSpaceOnUse" width="${n*w}" height="${w}" patternTransform="rotate(45)">${cs.map((c,i)=>`<rect x="${i*w}" width="${w}" height="${w}" fill="${SC[c]}"/>`).join('')}</pattern>`);fill=`url(#p${k})`;}
+  r.style.fill=fill;r.style.opacity=on?1:.45;
+  g.querySelectorAll('text').forEach(t=>{t.style.fill=on?'#fff':'var(--tx)';t.style.stroke=on?'rgba(0,0,0,.5)':'none';t.style.strokeWidth='2.5px';t.style.paintOrder='stroke';});
+  const s=document.getElementById('s'+k);if(s)s.textContent=sub[k]||'';});
+ document.getElementById('df').innerHTML=df.join('');
+ const open={tL:!R.cl.tL,tB:!R.cl.tB,tR:!R.cl.tR},st=(id,bad,tid,col='#d9453d')=>{const r=document.getElementById(id);r.style.fill=bad?col:'var(--pn)';r.style.stroke=bad?col:'var(--mu)';if(tid)document.getElementById(tid).style.fill=bad?'#fff':'var(--tx)';};
+ TL.forEach(([k,,,l])=>{const bad=k[0]=='x'?S[k]:open[k];st('t'+k,bad,'tt'+k,k[0]=='x'||S[k]||S.ctr?'#d9453d':'#e8820c');document.getElementById('tt'+k).textContent=bad?(k[0]=='x'?'BLOWN':'OPEN'):l;});
+ {const on=!!S.batt,r=document.getElementById('brl'),t=document.getElementById('tbrl');r.style.fill=on?'var(--am)':'#d9453d';r.style.stroke=on?'var(--am)':'#d9453d';t.style.fill='#fff';t.textContent=on?'CLOSED':'OPEN';['bc1','bc2'].forEach(k=>document.getElementById(k).style.stroke=on?'var(--am)':'var(--mu)');}
+ st('sw',!S.batt,'tsw');document.getElementById('tsw').textContent=S.batt?'SW ON':'SW OFF';
+ {const r=document.getElementById('rly'),t=document.getElementById('trly'),bl=S.gpuS&&S.gpuC&&!R.gpu;r.style.fill=R.gpu?SC.GPU:bl?'#d9453d':'var(--pn)';r.style.stroke=R.gpu?SC.GPU:bl?'#d9453d':'var(--mu)';t.style.fill=R.gpu||bl?'#fff':'var(--tx)';t.textContent=R.gpu?'CLOSED':bl?'BLOCKED':'OPEN';}
+ ['L','R'].forEach(x=>{const l=x=='L',sw=S[l?'lSw':'rSw'],ov=S[l?'lOV':'rOV'],g=l?R.lG:R.rG,on=l?R.lOn:R.rOn,t=document.getElementById('gs'+x),col=SC[l?'L GEN':'R GEN'];
+  document.getElementById('ml'+x).style.stroke=g?col:'var(--mu)';t.textContent=!g?'GCU: NO POWER':!sw?'GCU: GEN SW OFF':ov?'GCU: OVERVOLT >32V':'GCU: PARAMS OK';t.style.fill=on?'var(--mu)':'#d9453d';
+  {const sn=document.getElementById('sn'+x).style;sn.stroke=g?col:'var(--dead)';sn.strokeDasharray=g?'6 4':'none';sn.setProperty('--to','-10px');sn.animation=g?'dash .45s linear infinite':'none';sn.animationDirection='reverse';}document.getElementById('kl'+x).style.stroke=on?col:'var(--mu)';
+  const kr=document.getElementById('kr'+x),kt=document.getElementById('kt'+x);kr.style.fill=on?col:'var(--pn)';kr.style.stroke=on?col:'#d9453d';kt.style.fill=on?'#fff':'var(--tx)';kt.textContent=on?'CLOSED':'OPEN';
+  const ld=l?R.lLd:R.rLd,mx=l?290:710,a=(-60+120*Math.min(1,ld/100))*Math.PI/180,n=document.getElementById('ln'+x);
+  n.setAttribute('x2',mx+15*Math.sin(a));n.setAttribute('y2',193-15*Math.cos(a));document.getElementById('lt'+x).textContent=Math.round(ld)+'%';});
+ const pp=P(R,'J')||P(R,'BB')||P(R,'TFB'),A=[['L DC GEN',!R.lOn,'o'],['R DC GEN',!R.rOn,'o'],['L GEN TIE',open.tL,'o'],['BATT TIE',open.tB,'o'],['R GEN TIE',open.tR,'o'],['BATTERY CHARGE',S.low&&d.BT<9,'a']];
+  [!R.lOn,open.tL,open.tB,open.tR,!R.rOn].forEach((on0,i)=>{const on=on0&&pp;ANN[i]=on?WHY[i]():'';const r=document.getElementById('ar'+i),t=document.getElementById('at'+i);r.style.fill='#141414';r.style.stroke='#2c2c2c';t.style.fill=on?'#ffb000':'#6e6e6e';t.style.filter=on?'drop-shadow(0 0 3px #ffb000)':'none';});
+ const M=[],w=t=>M.push(['w',t]),i=t=>M.push(['i',t]);
+ const all3=S.ctr||(S.tL&&S.tB&&S.tR);
+ if(!P(R,'TFB'))w('Triple fed bus lost. There is NO annunciator for this: all engine gauges go to zero.');
+ if(all3)w('All 3 ties open: likely a center bus short or failure. Loss of the gear motor, so plan manual extension.');
+ else if(!P(R,'J'))w('Center bus unpowered: starters and gear motor are unavailable.');
+ if(!R.lOn&&!R.rOn&&(S.lE=='run'||S.rE=='run'))w('No generators online: running on battery only (24V 34Ah).');
+ if(R.tf.length==3)i('Triple fed bus is fed by all three inputs (L gen bus, battery bus, R gen bus), each through a 60A limiter and a diode, so it sits about 27V.');
+ else if(R.tf.length)i('Triple fed bus is still powered by '+R.tf.join(' + ')+'. It is protected only by its 60A limiters.');
+ if((R.lOn!=R.rOn)&&S.lE=='run'&&S.rE=='run'&&!all3)i('Single generator carrying both sides through the center bus and gen tie. Single-engine caution: gear amp draw may blow the gen tie with ice protection on.');
+ if(S.gear)i('Gear operation: the batt tie HED is desensitized (batt tie is uni-directional, activates at 275A).');
+ if(S.lE=='start'||S.rE=='start')i('Start: starter is fed from the center bus below 52% N1; the gen above 52%. Gen tie HEDs desensitize during starts (L, R are bi-directional, 325A; 400A for cross-start).');
+ if((S.lE=='start'&&R.rOn)||(S.rE=='start'&&R.lOn))i('Cross-start: the running generator feeds the center bus and starter through its gen tie.');
+ if(S.gpuC&&!R.gpu)i(S.gpuHV?'External power blocked: high-voltage sensor blocks the ext power relay at 32V ±0.5V.':'External power needs the GPU powered on and the EXT PWR switch on. It works with the battery switch off.');
+ if(R.gpu)i('External power feeds the center bus, then the gen buses through the ties, and the battery bus through the batt tie.'+(S.batt?'':' The battery switch is off, so the battery bus is not powered.'));
+ if(S.low&&d.BT<9)i('BATTERY CHARGE: charge circuit over 7A for more than 6 seconds. Normal right after a start; should go out within about 5 minutes.');
+ if((S.lE=='start'&&!R.sL)||(S.rE=='start'&&!R.sR))w('Starter relay has no power: it is fed from the center bus (battery, GPU or the other generator), so that engine will not start.');
+ if(R.sL)i('L starter relay is powered by '+src.SL.join(' + ')+' through the center bus.');
+ if(R.sR)i('R starter relay is powered by '+src.SR.join(' + ')+' through the center bus.');
+ if(!R.v28&&!S.ctr&&P(R,'J')&&!S.cL&&!S.cR)i('Gen ties are open: they close only when they sense 28V (a generator or the GPU), not the 24V battery, so the gen buses are unpowered on battery only.');
+ if(!R.v28&&S.batt&&(S.cL||S.cR)&&!S.ctr)i('Gen ties stay closed after losing 28V: they open only on over 325A (click a tie to simulate the HED trip) or when all power is lost, so the battery can feed the gen buses through them.');
+ if(!S.batt)i('Battery switch off: the batt relay and batt tie are open. The battery feeds only the hot battery bus through its diode, so the battery bus (and triple fed bus from it) loses the battery even with gens online, and the battery cannot power the center bus or starters.');
+ if((S.mL&&R.cl.tL||S.mR&&R.cl.tR)&&!R.v28)i('Gen tie manually closed: with no 28V source, the gen bus is running on battery power through the tie. It stays closed until it trips (over 325A) or all power is lost.');
+ if(R.bs)i('Start assist: during a cross-start or GPU start the battery also supplies power. It is paralleled with the '+(R.gpu?'GPU':'running generator')+' on the center bus, so the line to the starter relay blends both colors.');
+ if(!M.length)i('Normal. Gens paralleled and load sharing within 10%. Battery charging from the center bus through the batt tie; the hot battery bus is fed through diodes from the center bus and battery.');
+ ['L','R'].forEach(x=>{const l=x=='L',g=l?R.lG:R.rG,on=l?R.lOn:R.rOn,sw=S[l?'lSw':'rSw'],ov=S[l?'lOV':'rOV'];
+  if(g&&!on)w(x+' generator is producing power, but the GCU is holding the '+x+' line contactor open ('+(!sw?'gen switch off':ov?'output over 32V':'out of limits')+'). '+x+' DC GEN stays lit and the gen bus is not fed.');
+  else if(on)i(x+' GCU: generator output is within limits (28.25V ±0.25V, no overvoltage, no reverse current), so it closed the '+x+' line contactor and '+x+' DC GEN went out. The load meter reads the gen\'s DC load %.');});
+ document.getElementById('ins').innerHTML=M.map(([c,t])=>`<li class="${c}">${t}</li>`).join('');
+ {const on=!!S.gpuC,pl=document.getElementById('gpuPill'),kn=document.getElementById('gpuKnob'),pt=document.getElementById('gpuPt');pl.style.fill=on?SC.GPU:'var(--dead)';pl.style.stroke=on?SC.GPU:'var(--mu)';kn.setAttribute('cx',on?439:399);pt.setAttribute('x',on?412:427);pt.textContent=on?'ON':'OFF';pt.style.fill=on?'#fff':'var(--tx)';}
+ updPanel(R);updVolt(R);tipShow();sync();}
+
+let scSel=null,scSnap='';
+function scUpd(){if(scSel!==null&&JSON.stringify(S)!==scSnap)scSel=null;document.querySelectorAll('#sc button').forEach(b=>b.classList.toggle('lit',scSel!==null&&b.dataset.s==scSel));}
+const SCN=[['Battery Only (Ground)',{}],['GPU Power On',{gpuC:1,gpuS:1}],['Start R Engine',{rE:'start'}],['Cross-Start L From R GEN',{rE:'run',lE:'start',low:1}],['Normal Flight',{lE:'run',rE:'run',fl:1}],['L GEN Fail',{lE:'run',rE:'run',fl:1,lGF:1}],['R GEN Fail',{lE:'run',rE:'run',fl:1,rGF:1}],['Both GENs Fail',{lE:'run',rE:'run',fl:1,lGF:1,rGF:1}],['Gear Down, One GEN',{lE:'run',rE:'run',fl:1,rGF:1,gear:1}],['Center Bus Short',{lE:'run',rE:'run',fl:1,ctr:1}],['Triple Fed Bus Loss',{lE:'run',rE:'run',fl:1,xL:1,xR:1,xB:1}],['L GEN Overvoltage',{lE:'run',rE:'run',fl:1,lOV:1}],['L GEN Switch Off (Engine Running)',{lE:'run',rE:'run',fl:1,lSw:0}]];
+document.getElementById('sc').innerHTML=SCN.map((s,n)=>`<button data-s="${n}">${s[0]}</button>`).join('')+'<button data-s="r">Reset</button>';
+document.getElementById('sc').onclick=e=>{const b=e.target.closest('button');if(!b)return;S=b.dataset.s=='r'?{...D}:{...D,...SCN[b.dataset.s][1]};if(S.lE=='run'||S.rE=='run'){S.cL=S.cR=S.cB=1;}up();scSel=b.dataset.s=='r'?null:+b.dataset.s;scSnap=JSON.stringify(S);scUpd();};
+const CT=[['Switches',[['t','batt','Battery switch'],['t','lSw','L gen'],['t','rSw','R gen'],['t','gpuC','GPU power on'],['t','gpuS','EXT PWR switch']]],['Engines',[['s','lE','Left',['off','start','run']],['s','rE','Right',['off','start','run']]]],['Conditions',[['t','fl','In flight'],['t','gear','Gear motor running'],['t','low','Battery low (post-start)']]],['Faults',[['t','lGF','L gen fail'],['t','rGF','R gen fail'],['t','ctr','Center bus short'],['t','tL','L gen tie open'],['t','tB','Batt tie open'],['t','tR','R gen tie open'],['t','mL','L gen tie manual close'],['t','mR','R gen tie manual close'],['t','xL','L 60A limiter'],['t','xR','R 60A limiter'],['t','xB','Bat 60A limiter'],['t','lOV','L gen overvoltage'],['t','rOV','R gen overvoltage'],['t','gpuHV','GPU over 32V']]]];
+document.getElementById('ct').innerHTML=CT.map(([n,it])=>`<div class="lbl" style="margin-top:6px">${n}</div><div class="row">`+it.map(x=>x[0]=='t'?`<label class="tg"><input type="checkbox" data-k="${x[1]}"> ${x[2]}</label>`:`<span class="lbl">${x[2]}</span>`+x[3].map(v=>`<button data-k="${x[1]}" data-v="${v}">${v}</button>`).join('')).join('')+'</div>').join('');
+document.getElementById('ct').onchange=e=>{if(e.target.dataset.k){S[e.target.dataset.k]=e.target.checked?1:0;up();}};
+document.getElementById('ct').onclick=e=>{const b=e.target.closest('button');if(b){const k=b.dataset.k;if(k=='lE'||k=='rE')setE(k,b.dataset.v);else{S[k]=b.dataset.v;up();}}};
+function sync(){scUpd();document.querySelectorAll('#ct input').forEach(x=>x.checked=!!S[x.dataset.k]);document.querySelectorAll('#ct button').forEach(b=>b.classList.toggle('on',S[b.dataset.k]==b.dataset.v));}
+document.querySelectorAll('.ch').forEach(h=>{const t=()=>{const o=h.parentElement.classList.toggle('open');h.setAttribute('aria-expanded',o);};h.onclick=t;h.onkeydown=e=>{if(e.key=='Enter'||e.key==' '){e.preventDefault();t();}};});
+// ---- Cockpit switch panel (bottom-left of the diagram) ----
+function ig(k,i){const E=k=='L'?'lE':'rE',M=k=='L'?'lM':'rM';
+ if(i==1){if(S[E]=='start')S[E]=S[M]=='so'?'off':'run';return;}
+ if(S[E]=='off')setE(E,'start');
+ if(S[E]=='start')S[M]=i==2?'so':'on';}
+const SWS=[
+ {id:'ext',x:-365,y:508,n:2,get:()=>S.gpuS?0:1,set:i=>{S.gpuS=i==0?1:0;}},
+ {id:'batt',x:-270,y:508,n:2,get:()=>S.batt?0:1,set:i=>{S.batt=i==0?1:0;}},
+ {id:'lSw',x:-175,y:508,n:2,get:()=>S.lSw?0:1,set:i=>{S.lSw=i==0?1:0;}},
+ {id:'rSw',x:-80,y:508,n:2,get:()=>S.rSw?0:1,set:i=>{S.rSw=i==0?1:0;}},
+ {id:'gt',x:-365,y:632,n:3,lab:['MAN CLOSE','NORM','OPEN'],get:()=>S.gtOpen?2:(S.mL||S.mR)?0:1,set:i=>{S.gtOpen=i==2?1:0;S.mL=S.mR=i==0?1:0;}},
+ {id:'lIg',x:-245,y:632,n:3,lab:['ON','OFF','STARTER ONLY'],get:()=>S.lE=='start'?(S.lM=='so'?2:0):1,set:i=>ig('L',i)},
+ {id:'rIg',x:-125,y:632,n:3,lab:['ON','OFF','STARTER ONLY'],get:()=>S.rE=='start'?(S.rM=='so'?2:0):1,set:i=>ig('R',i)}];
+(function(){const T=(x,y,t,o='')=>`<text x="${x}" y="${y}" fill="#e6e9ec" font-size="11" font-weight="700" text-anchor="middle" ${o}>${t}</text>`;
+ let q='<defs><radialGradient id="kn" cx=".35" cy=".35"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#9aa3ab"/></radialGradient></defs><g id="cpg"><rect x="-400" y="430" width="390" height="240" rx="10" fill="#1b1f23" stroke="#3a4048" stroke-width="2"/>';
+ q+='<text x="-386" y="450" fill="#9aa3ab" font-size="10" font-weight="700">COCKPIT SWITCHES</text>';
+ q+=T(-365,556,'EXT PWR')+T(-270,556,'BATT')+T(-175,556,'L GEN')+T(-80,556,'R GEN')+`<circle id="cpl" cx="-308" cy="508" r="6" fill="#4a1512" stroke="#8a9199" stroke-width="1.5"/>`;
+ q+=T(-365,592,'GEN TIES')+T(-245,592,'L IGN &amp; START')+T(-125,592,'R IGN &amp; START');
+ SWS.forEach(s=>{const lab=s.lab||['ON','OFF'],ys=s.n==2?[-24,24]:[-24,0,24];
+  q+=`<circle cx="${s.x}" cy="${s.y}" r="15" fill="#2b3036" stroke="#8a9199" stroke-width="2"/><circle cx="${s.x}" cy="${s.y}" r="8" fill="#101316"/>`;
+  q+=`<line id="sk${s.id}" x1="${s.x}" y1="${s.y}" x2="${s.x}" y2="${s.y}" stroke="#cfd4da" stroke-width="7" stroke-linecap="round"/><circle id="sb${s.id}" cx="${s.x}" cy="${s.y}" r="7" fill="url(#kn)" stroke="#59636d" stroke-width="1"/>`;
+  lab.forEach((t,k)=>{q+=`<text id="sl${s.id}${k}" x="${s.x+25}" y="${s.y+ys[k]+4}" fill="#9aa3ab" font-size="${t.length>6?9:10}" font-weight="700">${t}</text>`;});
+  q+=`<rect data-sw="${s.id}" x="${s.x-28}" y="${s.y-40}" width="56" height="80" fill="transparent" style="cursor:pointer"/>`;});
+ q+='</g>';
+ const sv=document.getElementById('svg');sv.insertAdjacentHTML('beforeend',q);
+ sv.addEventListener('click',e=>{const g=e.target.closest('[data-sw]');if(!g)return;const s=SWS.find(z=>z.id==g.dataset.sw),p=new DOMPoint(e.clientX,e.clientY).matrixTransform(sv.getScreenCTM().inverse()),cur=s.get();
+  let tg;if(s.n==2)tg=cur?0:1;else{const dy=p.y-s.y;tg=Math.abs(dy)<=7?(cur+1)%3:dy<0?Math.max(0,cur-1):Math.min(2,cur+1);}
+  if(tg!=cur){s.set(tg);up();}});})();
+function updPanel(R){SWS.forEach(s=>{const i=s.get(),ys=s.n==2?[-24,24]:[-24,0,24],dy=ys[i];
+  document.getElementById('sk'+s.id).setAttribute('y2',s.y+dy);document.getElementById('sb'+s.id).setAttribute('cy',s.y+dy);
+  (s.lab||['ON','OFF']).forEach((t,k)=>{document.getElementById('sl'+s.id+k).setAttribute('fill',k==i?'#ffb000':'#9aa3ab');});});
+ document.getElementById('cpl').setAttribute('fill',R.gpu?'#ff3b30':'#4a1512');}
+
+// ---- Volt select knob + voltmeter (left side, above the annunciators) ----
+const VK={x:-150,y:312},VM={x:-310,y:308,r:44},VTH=[-125,-75,-25,25,75,125],VLAB=['EXT PWR','CTR BUS','L GEN','R GEN','TPL BUS','BATT'];
+const vXY=(cx,cy,r,a)=>[cx+r*Math.sin(a*Math.PI/180),cy-r*Math.cos(a*Math.PI/180)];
+(function(){let q='<g id="vg"><rect x="-400" y="246" width="390" height="124" rx="6" fill="#1b1f23" stroke="#3a4048" stroke-width="2"/>';
+ q+=`<circle cx="${VM.x}" cy="${VM.y}" r="${VM.r}" fill="#101316" stroke="#8a9199" stroke-width="3"/>`;
+ for(let v=0;v<=40;v+=10){const a=-120+240*v/40,[x1,y1]=vXY(VM.x,VM.y,VM.r-4,a),[x2,y2]=vXY(VM.x,VM.y,VM.r-11,a),[tx,ty]=vXY(VM.x,VM.y,VM.r-19,a);
+  q+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#e6e9ec" stroke-width="2"/><text x="${tx}" y="${ty+3}" fill="#cfd4da" font-size="8" text-anchor="middle">${v}</text>`;}
+ q+=`<line id="vnd" x1="${VM.x}" y1="${VM.y}" x2="${VM.x}" y2="${VM.y-30}" stroke="#ff9d2e" stroke-width="3" stroke-linecap="round"/><circle cx="${VM.x}" cy="${VM.y}" r="4" fill="#cfd4da"/>`;
+ q+=`<text id="vtx" x="${VM.x}" y="${VM.y+22}" fill="#fff" font-size="11" font-weight="700" text-anchor="middle"></text>`;
+ q+=`<text x="${VM.x}" y="${VM.y+56}" fill="#9aa3ab" font-size="9" font-weight="700" text-anchor="middle">VOLTS</text>`;
+ q+=`<circle cx="${VK.x}" cy="${VK.y}" r="28" fill="#1c2126" stroke="#8a9199" stroke-width="2"/><circle cx="${VK.x}" cy="${VK.y}" r="20" fill="#101316"/>`;
+ VTH.forEach((a,i)=>{const [x1,y1]=vXY(VK.x,VK.y,31,a),[x2,y2]=vXY(VK.x,VK.y,36,a);q+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#9aa3ab" stroke-width="2"/>`;
+  const [lx,ly]=vXY(VK.x,VK.y,44,a),an=Math.sin(a*Math.PI/180)<-.3?'end':Math.sin(a*Math.PI/180)>.3?'start':'middle',dy=Math.cos(a*Math.PI/180)<-.3?12:Math.cos(a*Math.PI/180)>.3?-3:4;
+  q+=`<text id="vl${i}" data-vs="${i}" x="${lx}" y="${ly+dy}" fill="#9aa3ab" font-size="9" font-weight="700" text-anchor="${an}" style="cursor:pointer">${VLAB[i]}</text>`;});
+ q+=`<line id="vkp" x1="${VK.x}" y1="${VK.y}" x2="${VK.x}" y2="${VK.y-20}" stroke="#fff" stroke-width="4" stroke-linecap="round"/><circle id="vkt" cx="${VK.x}" cy="${VK.y-20}" r="4" fill="#ffb000"/><circle cx="${VK.x}" cy="${VK.y}" r="5" fill="#cfd4da"/>`;
+ q+=`<circle data-vk="1" cx="${VK.x}" cy="${VK.y}" r="30" fill="transparent" style="cursor:pointer"/><text x="${VK.x}" y="362" fill="#9aa3ab" font-size="9" font-weight="700" text-anchor="middle">VOLT SELECT</text></g>`;
+ const sv=document.getElementById('svg');sv.insertAdjacentHTML('beforeend',q);
+ sv.addEventListener('click',e=>{const l=e.target.closest('[data-vs]');if(l){S.vs=+l.dataset.vs;up();return;}
+  if(e.target.closest('[data-vk]')){const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(sv.getScreenCTM().inverse());S.vs=((S.vs??5)+(p.x>VK.x?1:5))%6;up();}});})();
+function vRead(R,i){const gen=a=>a.some(v=>v=='L GEN'||v=='R GEN'||v=='GPU'),bus=k=>R.d[k]>=I?0:gen(R.src[k])?28.3:24;
+ return [S.gpuC?(S.gpuHV?33:28):0,bus('J'),bus('LG'),bus('RG'),R.d.TFB>=I?0:gen(R.src.TFB)?27.3:23,bus('BN')][i];}
+function updVolt(R){const i=S.vs??5,v=vRead(R,i),a=-120+240*Math.min(v,40)/40,[x,y]=vXY(VM.x,VM.y,30,a),n=document.getElementById('vnd');
+ n.setAttribute('x2',x);n.setAttribute('y2',y);document.getElementById('vtx').textContent=v.toFixed(1)+' V';
+ VLAB.forEach((t,k)=>document.getElementById('vl'+k).setAttribute('fill',k==i?'#ffb000':'#9aa3ab'));
+ const [px,py]=vXY(VK.x,VK.y,20,VTH[i]),p=document.getElementById('vkp');p.setAttribute('x2',px);p.setAttribute('y2',py);const t=document.getElementById('vkt');t.setAttribute('cx',px);t.setAttribute('cy',py);}
+
+up();
+</script></body></html>
